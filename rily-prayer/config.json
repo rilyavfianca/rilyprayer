@@ -1,0 +1,17 @@
+{
+  "name": "Rily Prayer",
+  "description": "Teman ibadah harian dengan jadwal sholat, pengingat, kiblat, doa, dzikir, dan statistik.",
+  "prayer_api": "https://aladhan.com/prayer-times-api",
+  "default_location": {
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "method": 20
+  },
+  "prayers": [
+    "Subuh",
+    "Dzuhur",
+    "Ashar",
+    "Maghrib",
+    "Isya"
+  ]
+}

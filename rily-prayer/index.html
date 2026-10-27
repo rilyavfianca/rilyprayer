@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e9eee3">
+  <meta name="description" content="Rily Prayer — teman ibadah harian dengan jadwal sholat, pengingat, kiblat, doa, dan dzikir.">
+  <title>Rily Prayer — Teman Ibadah Harian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Rily Prayer beranda">
+        <span class="brand-mark">☾</span><span><strong>rily prayer</strong><small>teman ibadah harian</small></span>
+      </a>
+      <div class="side-label">MENU UTAMA</div>
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <a class="nav-link active" href="#beranda"><span>⌂</span> Beranda</a>
+        <a class="nav-link" href="#jadwal"><span>◷</span> Jadwal sholat</a>
+        <a class="nav-link" href="#kiblat"><span>✧</span> Arah kiblat</a>
+        <a class="nav-link" href="#doa"><span>❋</span> Doa & dzikir</a>
+        <a class="nav-link" href="#statistik"><span>▥</span> Konsistensi</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="note-icon">✦</span>
+        <p>“Ingatlah Aku, niscaya Aku ingat (pula) kamu.”</p>
+        <small>QS. Al-Baqarah: 152</small>
+      </div>
+      <div class="side-bottom"><span class="status-dot"></span> Ruang tenang untuk ibadah</div>
+    </aside>
+
+    <main class="main-content" id="beranda">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="todayLabel">HARI INI</p>
+          <h1>Assalamu’alaikum <span class="wave">✦</span></h1>
+          <p class="muted">Semoga harimu dipenuhi keberkahan.</p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="notificationBtn" title="Aktifkan notifikasi" aria-label="Aktifkan notifikasi">♧</button>
+          <button class="location-pill" id="locationOpen"><span>⌖</span><span><small>LOKASI KAMU</small><strong id="currentLocation">Jakarta, Indonesia</strong></span><span>⌄</span></button>
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-text">
+          <div class="hero-tag"><span class="status-dot"></span> WAKTU SHOLAT BERIKUTNYA</div>
+          <p class="next-name" id="nextPrayerName">Memuat jadwal…</p>
+          <div class="countdown" id="countdown">--:--:--</div>
+          <p class="hero-sub" id="nextPrayerSub">Mengambil jadwal sholat untuk lokasimu</p>
+          <div class="hero-buttons">
+            <a class="button button-light" href="#jadwal">Lihat jadwal <span>↗</span></a>
+            <button class="button button-glass" id="quickAlarmBtn">♧ <span id="quickAlarmText">Aktifkan pengingat</span></button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="moon"></div><div class="star star-one">✦</div><div class="star star-two">✧</div>
+          <div class="mosque">
+            <div class="dome dome-main"></div><div class="dome dome-left"></div><div class="dome dome-right"></div>
+            <div class="minaret minaret-left"><i></i></div><div class="minaret minaret-right"><i></i></div>
+            <div class="mosque-body"><div class="arch"></div><div class="window"></div><div class="window w2"></div></div>
+          </div>
+          <div class="horizon"></div>
+        </div>
+        <div class="hero-bottom"><span>☾ <span id="hijriDate">Kalender Hijriah</span></span><span id="gregorianDate">Tanggal hari ini</span></div>
+      </section>
+
+      <section class="section-block" id="jadwal">
+        <div class="section-heading"><div><p class="eyebrow">JANGAN LEWATKAN</p><h2>Jadwal sholat</h2></div><button class="text-button" id="refreshBtn">↻ Perbarui jadwal</button></div>
+        <div class="prayer-grid" id="prayerGrid">
+          <div class="prayer-card skeleton"></div><div class="prayer-card skeleton"></div><div class="prayer-card skeleton"></div><div class="prayer-card skeleton"></div><div class="prayer-card skeleton"></div><div class="prayer-card skeleton"></div>
+        </div>
+        <p class="tiny-note" id="scheduleNote">Waktu sholat dihitung dari layanan jadwal sholat online. Periksa metode perhitungan sesuai wilayahmu.</p>
+      </section>
+
+      <section class="feature-grid">
+        <article class="panel qibla-panel" id="kiblat">
+          <div class="panel-heading"><div><p class="eyebrow">TEMUKAN ARAHNYA</p><h2>Arah kiblat</h2></div><span class="panel-icon">✧</span></div>
+          <div class="qibla-content">
+            <div class="compass" id="compass"><div class="compass-ring"><span class="north">U</span><span class="east">T</span><span class="south">S</span><span class="west">B</span><div class="needle" id="needle"><span class="needle-top"></span><span class="needle-bottom"></span></div><div class="compass-center">✦</div></div></div>
+            <div class="qibla-info"><p class="muted small">Arah kiblat dari lokasi pilihanmu</p><div class="qibla-degree"><span id="qiblaDegree">--°</span><small>dari utara</small></div><p id="qiblaDirection" class="qibla-direction">Memuat arah kiblat…</p><button class="button button-outline" id="geoBtn">Gunakan lokasiku</button><p class="tiny-note">Kompas visual menunjukkan arah dari utara. Arahkan perangkat secara manual; tidak menggunakan sensor kompas.</p></div>
+          </div>
+        </article>
+        <article class="panel daily-panel">
+          <div class="panel-heading"><div><p class="eyebrow">PENGINGAT LEMBUT</p><h2>Niat baik hari ini</h2></div><span class="panel-icon">♡</span></div>
+          <div class="quote-mark">“</div>
+          <p class="daily-quote" id="dailyQuote">Amalan yang paling dicintai Allah adalah amalan yang kontinu meskipun sedikit.</p>
+          <p class="quote-source">HR. Bukhari dan Muslim</p>
+          <div class="quote-footer"><span>Ambil satu langkah kecil hari ini.</span><span>✦</span></div>
+        </article>
+      </section>
+
+      <section class="section-block" id="doa">
+        <div class="section-heading"><div><p class="eyebrow">TENANGKAN HATI</p><h2>Doa & dzikir</h2></div><span class="muted small">Kumpulan singkat harian</span></div>
+        <div class="dhikr-grid">
+          <article class="dhikr-card"><span class="dhikr-symbol">☼</span><div><h3>Dzikir pagi</h3><p>Mulai hari dengan mengingat Allah.</p></div><button class="round-arrow" data-open="pagi" aria-label="Buka dzikir pagi">↗</button></article>
+          <article class="dhikr-card"><span class="dhikr-symbol">☾</span><div><h3>Dzikir petang</h3><p>Tutup hari dengan ketenangan.</p></div><button class="round-arrow" data-open="petang" aria-label="Buka dzikir petang">↗</button></article>
+          <article class="dhikr-card"><span class="dhikr-symbol">♡</span><div><h3>Doa setelah sholat</h3><p>Luangkan waktu untuk berdoa.</p></div><button class="round-arrow" data-open="setelah" aria-label="Buka doa setelah sholat">↗</button></article>
+        </div>
+      </section>
+
+      <section class="section-block" id="statistik">
+        <div class="section-heading"><div><p class="eyebrow">LANGKAH KECIL, ISTIQAMAH</p><h2>Konsistensi sholat</h2></div><span class="muted small">Tersimpan di perangkat ini</span></div>
+        <div class="panel stats-panel">
+          <div class="stats-summary"><div class="stats-circle"><strong id="weeklyPercent">0%</strong><small>7 hari ini</small></div><div><h3>Terus jaga kebiasaan baikmu</h3><p class="muted">Tandai sholat yang sudah kamu kerjakan. Catatan ini bersifat pribadi di browser ini.</p><div class="stats-key"><span><i class="key-done"></i> Sudah ditandai</span><span><i class="key-empty"></i> Belum ditandai</span></div></div></div>
+          <div class="weekly-days" id="weeklyDays"></div>
+          <div class="today-checklist"><div class="checklist-head"><h3>Catatan hari ini</h3><span id="todayProgress">0 dari 5</span></div><div class="checklist-grid" id="prayerChecklist"></div></div>
+          <p class="tiny-note">Statistik ini hanya alat bantu pribadi, bukan penilaian ibadah. Data tersimpan di localStorage browser dan tidak tersinkron ke perangkat lain.</p>
+        </div>
+      </section>
+      <footer class="footer"><span class="brand-mini">☾ rily prayer</span><span>Dirancang untuk menemani langkah baikmu · <span id="footerYear"></span></span></footer>
+    </main>
+  </div>
+
+  <dialog id="locationDialog" class="modal">
+    <form method="dialog" class="modal-head"><div><p class="eyebrow">SESUAIKAN JADWAL</p><h2>Pilih lokasi</h2></div><button class="close-button" value="cancel" aria-label="Tutup">×</button></form>
+    <div class="modal-body"><p class="muted">Masukkan kota dan negara untuk mengambil jadwal sholat setempat.</p><label for="cityInput">Kota</label><input id="cityInput" value="Jakarta" placeholder="Contoh: Bandung"><label for="countryInput">Negara</label><input id="countryInput" value="Indonesia" placeholder="Contoh: Indonesia"><label for="methodSelect">Metode perhitungan</label><select id="methodSelect"><option value="20">Kementerian Agama RI (umum)</option><option value="3">Muslim World League</option><option value="5">Egyptian General Authority</option><option value="2">ISNA</option><option value="1">University of Islamic Sciences, Karachi</option></select><p class="tiny-note">Metode dan hasil dapat berbeda menurut otoritas setempat.</p><button class="button button-primary full-width" id="saveLocationBtn" type="button">Simpan lokasi</button><p id="locationError" class="error-text" role="status"></p></div>
+  </dialog>
+
+  <dialog id="dhikrDialog" class="modal dhikr-modal">
+    <form method="dialog" class="modal-head"><div><p class="eyebrow">DOA & DZIKIR</p><h2 id="dhikrTitle">Dzikir harian</h2></div><button class="close-button" value="cancel" aria-label="Tutup">×</button></form>
+    <div class="modal-body" id="dhikrBody"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
